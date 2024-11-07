@@ -184,9 +184,9 @@ return {
           ignore_focus = {},
           always_divide_middle = true,
           always_show_tabline = true,
-          globalstatus = false,
+          globalstatus = true,
           refresh = {
-            statusline = 100,
+            statusline = 10,
             tabline = 100,
             winbar = 100,
           },
@@ -194,7 +194,26 @@ return {
         sections = {
           lualine_a = { 'mode' },
           lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = { 'filename' },
+          lualine_c = {
+            {
+              'filename',
+              file_status = true,
+              path = 1,
+              shorting_target = 40,
+              symbols = {
+                modified = '[+]', -- Text to show when the file is modified.
+                readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+                unnamed = '', -- Text to show for unnamed buffers.
+              },
+              -- Custom function to rename Neo-tree buffer in status line
+              fmt = function(str)
+                if vim.bo.filetype == 'neo-tree' then
+                  return 'FileSystem ' -- Set this to any name you like
+                end
+                return str
+              end,
+            },
+          },
           lualine_x = { 'encoding', 'fileformat', 'filetype' },
           lualine_y = { 'progress' },
           lualine_z = { 'location' },
