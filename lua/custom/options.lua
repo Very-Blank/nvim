@@ -6,8 +6,6 @@ vim.diagnostic.config {
   signs = true, -- Show signs in the sign column (optional, for quick reference)
 }
 
-vim.g.zig_fmt_autosave = 0
-
 vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
