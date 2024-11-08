@@ -165,6 +165,9 @@ return {
     dependencies = {
       'tpope/vim-repeat',
     },
+    config = function()
+      require('leap').setup {}
+    end,
   },
   {
     'nvim-lualine/lualine.nvim',
