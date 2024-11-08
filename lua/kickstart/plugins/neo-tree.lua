@@ -19,16 +19,40 @@ return {
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
       sort_case_insensitive = false, -- used when sorting files and directories in the tree
       sort_function = nil, -- use a custom function for sorting files and directories in the tree
-      -- sort_function = function (a,b)
-      --       if a.type == b.type then
-      --           return a.path > b.path
-      --       else
-      --           return a.type > b.type
-      --       end
-      --   end , -- this sorts files and directories descendantly
+
       default_component_configs = {
         container = {
           enable_character_fade = true,
+        },
+
+        sources = { -- table
+          {
+            source = 'filesystem', -- string
+            display_name = ' 󰉓 Files ', -- string | nil
+          },
+          {
+            source = 'buffers', -- string
+            display_name = ' 󰈚 Buffers ', -- string | nil
+          },
+          {
+            source = 'git_status', -- string
+            display_name = ' 󰊢 Git ', -- string | nil
+          },
+        },
+
+        diagnostics = {
+          symbols = {
+            hint = '󰌵',
+            info = '',
+            warn = '',
+            error = '',
+          },
+          highlights = {
+            hint = 'DiagnosticSignHint',
+            info = 'DiagnosticSignInfo',
+            warn = 'DiagnosticSignWarn',
+            error = 'DiagnosticSignError',
+          },
         },
         indent = {
           indent_size = 2,
@@ -88,6 +112,7 @@ return {
             conflict = '',
           },
         },
+
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
         file_size = {
           enabled = true,
