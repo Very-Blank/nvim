@@ -1,9 +1,8 @@
 vim.diagnostic.config {
-  virtual_text = false, -- Disable inline error messages
-  update_in_insert = false, -- Do not update diagnostics in insert mode
-  severity_sort = true, -- Sort diagnostics by severity
-  underline = true, -- Avoid underlining text for errors
-  signs = true, -- Show signs in the sign column (optional, for quick reference)
+  virtual_text = false,
+  update_in_insert = false,
+  severity_sort = true,
+  underline = true,
 }
 
 vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
