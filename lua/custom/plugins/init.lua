@@ -184,7 +184,7 @@ return {
         -- NOTE: If you enable messages, then the cmdline is enabled automatically.
         -- This is a current Neovim limitation.
         enabled = true, -- enables the Noice messages UI
-        view = 'notify', -- default view for messages
+        view = 'mini', -- default view for messages
       },
     },
   },
@@ -240,6 +240,7 @@ return {
       require('leap').setup {}
     end,
   },
+  --Better Bottom Bar
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
