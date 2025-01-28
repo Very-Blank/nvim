@@ -665,6 +665,8 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        automatic_installation = {},
+        ensure_installed = {},
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -838,21 +840,14 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
+  { -- You can easily change to a different colorscheme. Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    'AlexvZyl/nordic.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      vim.cmd.colorscheme 'nordic'
     end,
   },
 
@@ -950,8 +945,6 @@ require('lazy').setup({
   -- you can continue same window with `<space>sr` which resumes last telescope search
 }, {
   ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
@@ -969,8 +962,6 @@ require('lazy').setup({
     },
   },
 })
-
-require 'nordic.colors'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
