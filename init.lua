@@ -734,6 +734,10 @@ require('lazy').setup({
           end,
         },
       }
+
+      if IS_GODOT_PROJECT then
+        require('lspconfig').gdscript.setup {}
+      end
     end,
   },
 
@@ -1038,6 +1042,5 @@ require('lazy').setup({
     },
   },
 })
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
