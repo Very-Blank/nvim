@@ -248,4 +248,14 @@ return {
       }
     end,
   },
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      local lspconfig = require 'lspconfig'
+
+      if IS_GODOT_PROJECT then
+        lspconfig.gdscript.setup {}
+      end
+    end,
+  },
 }
