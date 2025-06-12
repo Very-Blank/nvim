@@ -12,7 +12,8 @@ return {
   config = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
     require('neo-tree').setup {
-      close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+      hide_root_node = true, -- This will hide the root folder
+      close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
