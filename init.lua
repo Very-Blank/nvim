@@ -880,16 +880,6 @@ require('lazy').setup({
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
-        cmp.setup.filetype({ 'zig' }, {
-          sources = {
-            { name = 'path' },
-            { name = 'buffer' },
-          },
-
-          completion = {
-            autocomplete = false,
-          },
-        })
       },
 
       snippets = { preset = 'luasnip' },
