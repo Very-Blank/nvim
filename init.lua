@@ -685,21 +685,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
-        -- lua_ls = {
-        --   -- cmd = { ... },
-        --   -- filetypes = { ... },
-        --   -- capabilities = {},
-        --   settings = {
-        --     Lua = {
-        --       completion = {
-        --         callSnippet = 'Replace',
-        --       },
-        --       -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        --       -- diagnostics = { disable = { 'missing-fields' } },
-        --     },
-        --   },
-        -- },
       }
 
       -- Ensure the servers and tools above are installed
@@ -718,12 +703,14 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'zls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
+        automatic_enable = true,
 
         handlers = {
           function(server_name)
@@ -732,21 +719,6 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-
-            if server_name == 'jdtls' then
-              server.settings = server.settings or {}
-              server.settings.java = server.settings.java or {}
-              server.settings.java.format = {
-                comments = {
-                  enabled = false,
-                },
-                enabled = false,
-                onType = {
-                  enabled = false,
-                },
-              }
-            end
-
             require('lspconfig')[server_name].setup(server)
           end,
         },
@@ -755,6 +727,14 @@ require('lazy').setup({
       if IS_GODOT_PROJECT then
         require('lspconfig').gdscript.setup {}
       end
+
+      vim.lsp.config['zls'] = {
+        settings = {
+          zls = {
+            enable_argument_placeholders = false,
+          },
+        },
+      }
 
       -- Manual install because luals package in mason is old.
       require('lspconfig').lua_ls.setup({
@@ -987,7 +967,7 @@ require('lazy').setup({
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby', 'cpp', 'zig' },
+        additional_vim_regex_highlighting = { 'ruby', 'cpp'},
       },
       indent = { enable = true, disable = { 'ruby', 'cpp' } },
     },
