@@ -828,11 +828,19 @@ require('lazy').setup({
           --   end,
           -- },
         },
-        opts = {
-          history = true,
-          region_check_events = "InsertEnter",
-          delete_check_events = "TextChanged,InsertLeave",
-        },
+        config = function()
+          local luasnip = require('luasnip')
+          -- Configure LuaSnip options
+          luasnip.setup({
+            history = true,
+            region_check_events = "InsertEnter",
+            delete_check_events = "TextChanged,InsertLeave",
+          })
+          -- Disable default tab mappings for LuaSnip
+          -- This prevents LuaSnip from hijacking the tab key
+          vim.keymap.del({"i", "s"}, "<Tab>", {silent = true})
+          vim.keymap.del({"i", "s"}, "<S-Tab>", {silent = true})
+        end
       },
       'folke/lazydev.nvim',
     },
