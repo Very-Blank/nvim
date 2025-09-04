@@ -300,7 +300,7 @@ require('lazy').setup({
   -- Then, because we use the `opts` key (recommended), the configuration runs
   -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -381,7 +381,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -481,13 +481,6 @@ require('lazy').setup({
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for Neovim
-      -- Mason must be loaded before its dependents so we need to set it up here.
-      -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-      { 'mason-org/mason.nvim', opts = {} },
-      'mason-org/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 
@@ -700,7 +693,6 @@ require('lazy').setup({
 
         capabilities = capabilities,
       })
-
     end,
   },
 
@@ -784,8 +776,8 @@ require('lazy').setup({
           })
           -- Disable default tab mappings for LuaSnip
           -- This prevents LuaSnip from hijacking the tab key
-          vim.keymap.del({"i", "s"}, "<Tab>", {silent = true})
-          vim.keymap.del({"i", "s"}, "<S-Tab>", {silent = true})
+          vim.keymap.del({ "i", "s" }, "<Tab>", { silent = true })
+          vim.keymap.del({ "i", "s" }, "<S-Tab>", { silent = true })
         end
       },
       'folke/lazydev.nvim',
@@ -927,7 +919,7 @@ require('lazy').setup({
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby', 'cpp', 'zig'},
+        additional_vim_regex_highlighting = { 'ruby', 'cpp', 'zig' },
       },
       indent = { enable = true, disable = { 'ruby', 'cpp', 'zig' } },
     },
