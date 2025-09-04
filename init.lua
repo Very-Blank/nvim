@@ -674,6 +674,16 @@ require('lazy').setup({
         capabilities = capabilities,
       })
 
+      lspconfig.nil_ls.setup({
+        cmd = { "nil" },
+        settings = {
+          nil_ls = {
+            enable_argument_placeholders = false,
+          },
+        },
+        capabilities = capabilities,
+      })
+
       lspconfig.lua_ls.setup({
         cmd = { "lua-language-server" },
         settings = {
