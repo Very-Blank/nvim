@@ -680,10 +680,10 @@ require('lazy').setup({
       })
 
       lspconfig.hls.setup({
-        cmd = { "haskell-language-server-9.10.3" },
+        cmd = { 'haskell-language-server-wrapper', '--lsp' },
+        filetypes = { 'haskell', 'lhaskell' },
         settings = {
-          hls = {
-            enable_argument_placeholders = false,
+          haskell = {
           },
         },
         capabilities = capabilities,
@@ -692,9 +692,7 @@ require('lazy').setup({
       lspconfig.nil_ls.setup({
         cmd = { "nil" },
         settings = {
-          nil_ls = {
-            enable_argument_placeholders = false,
-          },
+          nil_ls = {},
         },
         capabilities = capabilities,
       })
