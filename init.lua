@@ -664,6 +664,11 @@ require('lazy').setup({
         }
       end
 
+      lspconfig.clangd.setup({
+        cmd = { "clangd" },
+        capabilities = capabilities,
+      })
+
       lspconfig.zls.setup({
         cmd = { "zls" },
         settings = {
