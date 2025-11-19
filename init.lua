@@ -679,10 +679,10 @@ require('lazy').setup({
         capabilities = capabilities,
       })
 
-      lspconfig.haskell_language_server.setup({
+      lspconfig.hls.setup({
         cmd = { "haskell-language-server-9.10.3" },
         settings = {
-          haskell_language_server = {
+          hls = {
             enable_argument_placeholders = false,
           },
         },
